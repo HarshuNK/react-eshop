@@ -1,7 +1,7 @@
 @media screen and (max-width:768px) {
     .container-main{
         position: relative;
-        top: 15vw;
+        top: 20vw;
         z-index: -3;
     }
     .navbar a.logo {
@@ -12,6 +12,14 @@
         opacity: 1;
         transition: all 0.3s;
     } 
+
+    .single-product .row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 }
 
 /* tab view */

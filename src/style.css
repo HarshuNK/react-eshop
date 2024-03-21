@@ -247,3 +247,13 @@ header .navbar{
 
 }
 
+/* single product info */
+.img-block{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-img{
+    width: calc((100vw - 80vw));
+}
+
