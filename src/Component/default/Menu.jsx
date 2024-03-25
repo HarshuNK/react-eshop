@@ -1,7 +1,26 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../CustomHook/Auth'
+import { toast } from 'react-toastify'
 
 function Menu() {
+    // context values
+    const { contextData , setToken } = useAuth()
+
+    // router instance
+    const navigate = useNavigate()
+
+    //logout logic
+    const logout = async () => {
+        if(window.confirm(`Are you sure to logout`)){
+            setToken(false)
+            toast.success("Logout Successfully")
+            navigate('/')
+        } else {
+            toast.warning("Logout terminated")
+        }
+        
+    }
 
     const openSidebar = () => {
         document.getElementById("sideMenu").classList.add("active")
@@ -18,9 +37,18 @@ function Menu() {
                         <i className="bi bi-list"></i>
                     </button>   
                     <NavLink to={`/`} className="logo">React-E-Shop</NavLink>
-                    <NavLink to={`/cart`} className="cart">
-                        <i className="bi bi-cart-fill"></i>
-                    </NavLink>
+                    <div>
+                            <NavLink to={`/cart`} className="cart">
+                                <i className="bi bi-cart-fill"></i>
+                            </NavLink>
+
+                            {
+                                contextData.token ?
+                                <button onClick={logout} className='btn btn-danger' style={{ marginLeft:'10px'}}>
+                                    <i className='bi bi-box-arrow-right'></i>
+                                </button>:null
+                            }     
+                    </div>
                 </div>
             </nav>
         </header>
