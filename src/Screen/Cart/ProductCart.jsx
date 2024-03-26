@@ -3,22 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 
-const url = `https;//fakestoreapi.com`
+
 function ProductCart() {
   const [cart,setCart] = useState([])
 
-  // read the carts data
-  const readCart = async () => {
-    await axios.get(`${url}/carts`)
-      .then(res => {
-          // console.log(`carts =`, res.data)
-          
-      }).catch(err => toast.error(err.response.data.msg))
-  }
-
-  useEffect(() => {
-    readCart()
-},[])
   return (
     <div className="container">
       <div className="row">
@@ -27,7 +15,9 @@ function ProductCart() {
           <tabel className="table">
             <thead>
               <tr>
-                <th>Product</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Price</th>
                 <th>Quantity</th>
                 <th>Action</th>
               </tr>
@@ -35,7 +25,9 @@ function ProductCart() {
             
             <tbody>
                 {
-
+                    card && card.products.map((item,index) => {
+                      
+                    })
                 }
             </tbody>
           </tabel>
