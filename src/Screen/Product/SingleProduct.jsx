@@ -2,10 +2,13 @@ import React,{useState,useEffect} from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import useCart from '../../CustomHook/Cart'
 
 const url = `https://fakestoreapi.com`
 function SingleProduct() {
     const [product, setProduct] = useState([])
+
+    const { addToCart } = useCart()
 
     // to read router params
     let params = useParams()
@@ -41,7 +44,7 @@ function SingleProduct() {
                 </div>
 
                 <div className="cart-btn">
-                    <button className="btn">
+                    <button onClick={() => addToCart(product)} className="btn">
                         <i className="bi bi-cart"></i>
                     </button>
                 </div>

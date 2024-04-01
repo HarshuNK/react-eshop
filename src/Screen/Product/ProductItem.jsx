@@ -1,7 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import useCart from '../../CustomHook/Cart'
+
 
 function ProductItem(props) {
+    const { addToCart } = useCart()
     let { id, title, image, category, description, price, rating} = props
   return (
     <div className="card">
@@ -18,7 +21,7 @@ function ProductItem(props) {
             </div>
         </NavLink>
         <div className="card-back">
-            <button className="btn">Add to Cart
+            <button onClick={() => addToCart(props)} className="btn">Add to Cart
                 <i className="bi bi-cart"></i>
             </button>
         </div>
